@@ -1,4 +1,5 @@
 using eTickets.Data;
+using eTickets.Data.Services;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql;
 
@@ -14,6 +15,8 @@ var serverVersion = ServerVersion.AutoDetect(connectionString);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(
             dbContextOptions => dbContextOptions.UseMySql(connectionString, serverVersion));
+
+builder.Services.AddScoped<IActorsService, ActorsService>(); // not usefull ?
 
 
 var app = builder.Build();
